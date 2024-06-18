@@ -3,7 +3,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useRecoilState } from "recoil";
 import { cartState } from "@/store/atom";
 import EmptyCart from "@/components/EmptyCart";
-import { baseURL } from "@/utils/config";
 import axios from "axios";
 
 const CartPage = () => {
@@ -19,7 +18,7 @@ const CartPage = () => {
   }
 
   const api = axios.create({
-    baseURL,
+    baseURL: import.meta.env.VITE_BACKEND_URL,
   });
 
   async function calculateTotalPrice() {

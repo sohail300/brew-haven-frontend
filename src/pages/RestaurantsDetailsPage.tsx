@@ -11,7 +11,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Star } from "lucide-react";
-import { baseURL } from "../utils/config";
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
 import googleMapsSVG from "../../public/google-maps.svg";
 
@@ -64,7 +63,7 @@ const RestaurantsDetailsPage = () => {
   }
 
   const api = axios.create({
-    baseURL,
+    baseURL: import.meta.env.VITE_BACKEND_URL,
   });
 
   async function getRestaurantData() {

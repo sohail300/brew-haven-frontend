@@ -4,7 +4,6 @@ import RestaurantCard from "../components/RestaurantCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import DownloadApp from "../components/DownloadApp";
-import { baseURL } from "../utils/config.ts";
 import { dishesTypesImageIds } from "@/utils/dishesTypes.ts";
 
 const RestaurantsListPage = () => {
@@ -23,7 +22,7 @@ const RestaurantsListPage = () => {
   }
 
   const api = axios.create({
-    baseURL,
+    baseURL: import.meta.env.VITE_BACKEND_URL,
   });
 
   async function getRestaurantData() {
