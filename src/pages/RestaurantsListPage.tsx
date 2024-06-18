@@ -4,34 +4,36 @@ import RestaurantCard from "../components/RestaurantCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import DownloadApp from "../components/DownloadApp";
+import { baseURL } from "../utils/config.ts";
+import { dishesTypesImageIds } from "@/utils/dishesTypes.ts";
 
 const RestaurantsListPage = () => {
-  const [shops, setShops] = useState([]);
-  const [dishes, setDishes] = useState([]);
+  const [shops, setShops] = useState<Shop[] | null>();
+
+  interface Shop {
+    address: string;
+    description: string;
+    distance: string;
+    latitude: string;
+    longitude: string;
+    name: string;
+    rating: number;
+    reviews: number;
+    _id: string;
+  }
+
+  const api = axios.create({
+    baseURL,
+  });
 
   async function getRestaurantData() {
-    const response = await axios.get("http://localhost:3000/api/restaurants");
+    const response = await api.get("/api/restaurants");
     console.log(response.data);
     setShops(response.data.shops);
   }
 
-  const lat = 12.9351929;
-  const lng = 77.62448069999999;
-
-  async function getDishesTypesData() {
-    const response = await axios.get(
-      `https://food-delivery-service-7vpo.onrender.com/api/restaurants?lat=${lat}&lng=${lng}`
-    );
-    console.log("inside");
-    console.log(
-      response?.data?.data?.cards[0]?.card?.card?.imageGridCards?.info
-    );
-    setDishes(response?.data?.data?.cards[0]?.card?.card?.imageGridCards?.info);
-  }
-
   useEffect(() => {
     getRestaurantData();
-    getDishesTypesData();
   }, []);
 
   const responsive = {
@@ -57,7 +59,7 @@ const RestaurantsListPage = () => {
     <div>
       <div className="flex flex-col mt-8 mb-8 w-4/5 mx-auto">
         <div className="flex flex-row justify-between">
-          <h2 className="mb-4 text-3xl font-bold text-lagoonBlue">
+          <h2 className="mb-4 text-2xl sm:text-3xl font-bold text-lagoonBlue">
             What's on your mind?
           </h2>
         </div>
@@ -69,18 +71,18 @@ const RestaurantsListPage = () => {
             draggable={true}
             infinite={true}
             autoPlay={true}
-            autoPlaySpeed={4000}
+            autoPlaySpeed={3000}
             keyBoardControl={true}
             transitionDuration={500}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
+            removeArrowOnDeviceType={["mobile"]}
           >
-            {dishes.map((item) => {
+            {dishesTypesImageIds.map((item) => {
               return (
                 <div>
                   <img
                     src={
                       "https://media-assets.swiggy.com/swiggy/image/upload/" +
-                      item.imageId
+                      item
                     }
                     alt="dish"
                     className="w-80 h-auto ml-4 mr-4 cursor-pointer"
@@ -94,23 +96,27 @@ const RestaurantsListPage = () => {
 
       <div className="flex flex-col mt-8 mb-8 w-4/5 mx-auto">
         <div className="flex flex-row justify-between">
-          <h2 className="mb-4 text-3xl font-bold text-lagoonBlue">
+          <h2 className="mb-4 text-2xl sm:text-3xl font-bold text-lagoonBlue">
             Restaurants with online food delivery
           </h2>
         </div>
-        <div className="grid grid-cols-4">
-          {shops.map((item) => {
+        <div className="w-full flex flex-wrap">
+          {shops?.map((item) => {
             return (
-              <RestaurantCard
+              <div
+                className=" w-full mb-8 sm:w-1/2 sm:px-4 lg:w-1/3"
                 key={item._id}
-                id={item._id}
-                name={item.name}
-                image="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                address={item.address}
-                distance={item.distance}
-                rating={item.rating}
-                reviews={item.reviews}
-              />
+              >
+                <RestaurantCard
+                  id={item._id}
+                  name={item.name}
+                  image="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  address={item.address}
+                  distance={item.distance}
+                  rating={item.rating}
+                  reviews={item.reviews}
+                />
+              </div>
             );
           })}
         </div>

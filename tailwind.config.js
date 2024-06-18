@@ -18,6 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'lagoonBlue': '#003B40',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -52,6 +53,7 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: ["Montserrat", 'sans-serif'],
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
