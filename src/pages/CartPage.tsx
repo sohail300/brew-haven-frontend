@@ -8,7 +8,7 @@ import axios from "axios";
 const CartPage = () => {
   const [cart] = useRecoilState(cartState);
   const [charges, setCharges] = useState<ChargesState | undefined>();
-  const [email] = useState("");
+  const [email, setEmail] = useState("");
 
   interface ChargesState {
     itemTotal: number;
@@ -76,9 +76,18 @@ const CartPage = () => {
                 </div>
               </div>
               <div className="bg-white shadow-lg rounded-lg p-8 w-full sm:mb-8">
-                <div className="text-lg font-bold text-gray-900 mb-6">
-                  Choose Payment Method
+                <div className="text-md font-semibold text-gray-900 mb-6">
+                  Enter your email here to receive comfirmation mail
                 </div>
+                <input
+                  type="text"
+                  className="border border-gray-300 rounded-lg py-2 px-4 w-full mb-4 focus:outline-none"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setEmail(e.target.value);
+                  }}
+                />
                 <div
                   className="bg-green-500 py-3 px-6 text-white font-medium text-center cursor-pointer rounded-lg hover:bg-green-600 transition"
                   onClick={() => checkout()}

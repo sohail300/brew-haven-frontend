@@ -76,7 +76,6 @@ const AboutPage = () => {
         <div className="h-[15vh] col-span-3 border-2 border-slate-100 "></div>
       </div>
 
-      {/* Header */}
       <header className="bg-[#003B40] w-full py-4 shadow-md">
         <div className="container mx-auto text-center text-white">
           <h1 className="text-3xl font-bold">Urban Brew Café</h1>
@@ -86,7 +85,6 @@ const AboutPage = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container mx-auto p-4 flex flex-col items-center">
         <section className="bg-white shadow-md rounded-lg p-6 w-full md:w-2/3 lg:w-1/2 my-6">
           <h2 className="text-2xl font-bold text-[#003B40] mb-4">About Us</h2>
@@ -132,7 +130,6 @@ const AboutPage = () => {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-[#003B40] w-full py-4">
         <div className="container mx-auto text-center text-white">
           <p>

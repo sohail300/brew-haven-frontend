@@ -7,8 +7,8 @@ import RestaurantsDetailsPage from "./pages/RestaurantsDetailsPage";
 import Navbar from "./components/Navbar";
 import AboutPage from "./pages/AboutPage";
 import { RecoilRoot } from "recoil";
-import PaymentSuccess from "./components/PaymentSuccess";
-import PaymentCanceled from "./components/paymentCanceled";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentCanceled from "./pages/PaymentCanceled";
 
 function App() {
   return (
