@@ -23,13 +23,11 @@ const RestaurantsListPage = () => {
     _id: string;
   }
 
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL,
-  });
-
   async function getRestaurantData() {
     setLoading(true);
-    const response = await api.get("/api/restaurants");
+    const response = await axios.get(
+      "https://brew-haven-backend.onrender.com/api/restaurants"
+    );
     console.log(response.data);
     setShops(response.data.shops);
     setLoading(false);

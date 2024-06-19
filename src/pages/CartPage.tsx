@@ -17,10 +17,6 @@ const CartPage = () => {
     total: number;
   }
 
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL,
-  });
-
   async function calculateTotalPrice() {
     const obj = {
       itemTotal: 0,
@@ -48,7 +44,10 @@ const CartPage = () => {
   }, []);
 
   async function checkout() {
-    const response = await api.post("/course/checkout", { email });
+    const response = await axios.post(
+      "https://brew-haven-backend.onrender.com/api/placeOrder",
+      { email }
+    );
     console.log("inside checkout");
     console.log(response.data);
     window.location.href = response.data.url;
