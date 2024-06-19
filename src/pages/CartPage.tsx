@@ -46,7 +46,9 @@ const CartPage = () => {
   async function checkout() {
     const response = await axios.post(
       "https://brew-haven-backend.onrender.com/api/place-order",
-      { email }
+      {
+        email,
+      }
     );
     console.log("inside checkout");
     console.log(response.data);
