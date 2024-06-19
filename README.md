@@ -13,3 +13,6 @@ Welcome to the Brew Haven website! This project showcases different coffee shops
  ### No setup required, just freely browse the website https://brew-haven-frontend.vercel.app/
  
 ## Demo
+
+https://github.com/sohail300/brew-haven-frontend/assets/144511967/e687ddb0-c5e7-42f5-857b-d7fa5a8a4975
+
