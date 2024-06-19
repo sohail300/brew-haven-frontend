@@ -16,6 +16,7 @@ Welcome to the Brew Haven website! This project showcases different coffee shops
 
 https://github.com/sohail300/brew-haven-frontend/assets/144511967/e687ddb0-c5e7-42f5-857b-d7fa5a8a4975
 
+## Issues
 I get a Stripe error at the end, that is probably because of this reason.
 ![image](https://github.com/sohail300/brew-haven-frontend/assets/144511967/c9509e7b-07b3-4024-b9e1-1c15b8f3a390)
 
